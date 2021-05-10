@@ -1,0 +1,8 @@
+{
+  "token" : "_TOKEN_",
+  "prefix" : ";",
+  "commands": {
+    "How are you?": "Hey! i'm good",
+    "Hello": "world",
+  }
+}
