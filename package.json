@@ -1,0 +1,14 @@
+{
+  "name": "Basic-Bot-Discord",
+  "version": "1.0.0",
+  "description": "discord bot for chatting.",
+  "main": "bot.js",
+  "scripts": { "dev": "nodemon bot.js" },
+  "license": "MIT",
+  "engines": {
+    "node": ">= 6.11.3",
+    "npm": ">= 6.4.1"},
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "nodemon": "^1.18.5"}
+}
