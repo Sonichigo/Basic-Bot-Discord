@@ -1,14 +1,69 @@
 {
-  "name": "Basic-Bot-Discord",
-  "version": "1.0.0",
-  "description": "discord bot for chatting.",
-  "main": "bot.js",
-  "scripts": { "dev": "nodemon bot.js" },
+  "name": "alphasians-aina",
+  "version": "0.4.0",
+  "description": "Alphasians AINA",
+  "keywords": [],
+  "homepage": "https://github.com/Alphasians/AinaBot",
+  "bugs": {
+    "url": "https://github.com/Alphasians/AinaBot/issues"
+  },
   "license": "MIT",
-  "engines": {
-    "node": ">= 6.11.3",
-    "npm": ">= 6.4.1"},
+  "contributors": [
+    "Sonichigo",
+    "Krishdevdb"
+  ],
+  "main": "src/index.js",
+  "bin": {},
+  "man": [],
+  "directories": {
+    "src": "src",
+    "lib": "dist"
+  },
+  "repository": "github:Alphasians/AinaBot",
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "prepare": "husky install",
+    "commit": "npx --no-install cz",
+    "lint": "npx eslint .",
+    "lint:fix": "npx eslint . --fix"
+  },
   "dependencies": {
-    "discord.js": "^11.4.2",
-    "nodemon": "^1.18.5"}
+    "@discordjs/builders": "^0.6.0",
+    "@discordjs/opus": "^0.5.3",
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "cheerio": "^1.0.0-rc.10",
+    "discord-api-types": "^0.23.1",
+    "discord-xp": "^1.1.16",
+    "discord.js": "^12.5.3",
+    "discord.js-commando": "github:discordjs/Commando",
+    "dotenv": "^10.0.0",
+    "ffmpeg-static": "^4.4.0",
+    "require-all": "^3.0.0",
+    "sequelize": "^6.6.5",
+    "simple-youtube-api": "^5.2.1",
+    "sqlite": "^4.0.23",
+    "ytdl-core": "^4.9.1"
+  },
+  "devDependencies": {
+    "@types/node": "^16.4.13",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.30.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "husky": "^7.0.0"
+  },
+  "engines": {},
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/",
+    "tag": "latest"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
