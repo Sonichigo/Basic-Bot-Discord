@@ -15,12 +15,39 @@ dotenv.config({
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
 client.commands = new Collection();
-const commandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWith('.js'));
+const commands = [];
+
+const commandFiles = fs
+  .readdirSync('./src/commands')
+  .map(folder =>
+    fs
+      .readdirSync(`./src/commands/${folder}`)
+      .filter(file => file.endsWith('.js'))
+      .map(file => `./src/commands/${folder}/${file}`)
+  )
+  .flat();
 
 for (const file of commandFiles) {
-	const command = require(`./commands/${file}`);
-	client.commands.set(command.data.name, command);
+  const command = require(`${file}`);
+  if (Object.keys(command).length === 0) continue;
+  commands.push(command.data.toJSON());
+  client.commands.set(command.data.name, command);
 }
+
+(async () => {
+  try {
+    console.log('Started refreshing application (/) commands.');
+
+    await rest.put(Routes.applicationCommands(client_id), {
+      body: commands
+    });
+
+    console.log('Successfully reloaded application (/) commands.');
+  } catch (error) {
+    console.error(error);
+  }
+})();
+
 
 client.once('ready', () => {
 	console.log('Ready!');
