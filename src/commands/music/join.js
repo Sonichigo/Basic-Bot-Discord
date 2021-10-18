@@ -3,7 +3,7 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('join')
-		.setDescription('join a vc!'),
+		.setDescription('Join a VC!'),
 
   async run (msg) {
     const voiceChannel = msg.member.voice.channel

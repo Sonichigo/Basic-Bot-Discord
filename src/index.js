@@ -1,5 +1,4 @@
-const { Client, Collection, Intents } = require('discord.js');
-const fs = require('fs');
+const { Client, Intents } = require('discord.js');
 const Levels = require('discord-xp')
 const path = require('path')
 require('dotenv').config()
@@ -11,43 +10,7 @@ const dotenv = require('dotenv')
 dotenv.config({
   path: path.join(__dirname, '..', '.env')
 })
-
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
-
-client.commands = new Collection();
-const commands = [];
-
-const commandFiles = fs
-  .readdirSync('./src/commands')
-  .map(folder =>
-    fs
-      .readdirSync(`./src/commands/${folder}`)
-      .filter(file => file.endsWith('.js'))
-      .map(file => `./src/commands/${folder}/${file}`)
-  )
-  .flat();
-
-for (const file of commandFiles) {
-  const command = require(`${file}`);
-  if (Object.keys(command).length === 0) continue;
-  commands.push(command.data.toJSON());
-  client.commands.set(command.data.name, command);
-}
-
-(async () => {
-  try {
-    console.log('Started refreshing application (/) commands.');
-
-    await rest.put(Routes.applicationCommands(client_id), {
-      body: commands
-    });
-
-    console.log('Successfully reloaded application (/) commands.');
-  } catch (error) {
-    console.error(error);
-  }
-})();
-
 
 client.once('ready', () => {
 	console.log('Ready!');
